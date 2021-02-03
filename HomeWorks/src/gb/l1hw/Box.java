@@ -1,4 +1,4 @@
-package gb.l3hw;
+package gb.l1hw;
 
 import java.util.ArrayList;
 
@@ -21,7 +21,7 @@ public class Box<T extends Fruit> {
         this.fruits = fruits;
     }
 
-    public void putFruit(T fruit){
+    public void putFruit(T fruit) {
         fruits.add(fruit);
     }
 
@@ -29,12 +29,15 @@ public class Box<T extends Fruit> {
         return boxName;
     }
 
-    public void pourOver(Box<T> anotherBox){
+    public void pourOver(Box<T> anotherBox) {
+        if (this == anotherBox){
+            return;
+        }
         anotherBox.fruits.addAll(this.fruits);
         fruits.clear();
     }
 
-    public double getBoxWeight(){
+    public double getBoxWeight() {
         double weight = 0.0;
         for (int i = 0; i < fruits.size(); i++) {
             weight += fruits.get(i).getWeight();
@@ -42,7 +45,7 @@ public class Box<T extends Fruit> {
         return weight;
     }
 
-    public boolean compare(Box<?> anotherBox){
-        return getBoxWeight() - anotherBox.getBoxWeight() >= 0 && getBoxWeight() - anotherBox.getBoxWeight() < 0.000001;
+    public boolean compare(Box<?> anotherBox) {
+        return Math.abs(getBoxWeight() - anotherBox.getBoxWeight()) < 0.000001;
     }
 }

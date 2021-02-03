@@ -1,4 +1,4 @@
-package gb.l3hw;
+package gb.l1hw;
 
 public class Fruit {
     private double weight;
